@@ -43,7 +43,7 @@ export default {
   name: 'App',
   data(){ 
     return {
-      모달창열림 : false,
+      모달창열림 : true,
       신고수 : [0,0,0],
       메뉴들 : ['Home', 'Shop', 'About'],
       products : ['평거동원룸', '가좌동원룸', '칠암동원룸'],
@@ -70,9 +70,11 @@ div{
   position: fixed; padding: 150px;
 }
 .white-bg{
-  width: 40%; background: white;
+  width: 20%; height:25%; background: white;
   border-radius: 15px;
   padding: 60px;
+  position: fixed;
+  top: 10%; left: 40%;
 }
 .room-img{
   width: 20%;
