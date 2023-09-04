@@ -8,8 +8,8 @@
     <h4>XX 원룸</h4>
     <p>{{ price2 }}만원</p>
   </div>
-</template>
-
+</template>  
+ 
 <script>
 
 export default {
