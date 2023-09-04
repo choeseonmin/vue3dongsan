@@ -13,37 +13,53 @@
   </div>
 
   <div>
-    <img src="./assets/room0.jpg" class="room-img">
-    <h4 @click="모달창열림 = true">{{ products[0] }}</h4>
-    <p>50만원</p> 
-    <button @click="신고수[0]++">허위매물신고</button> 
-    <span> 신고수 : {{ 신고수[0] }}</span>
+    <img :src="원룸들[0].image" class="room-img">
+    <h4 @click="모달창열림 == true">{{원룸들[0].title}}</h4>
+    <p>{{원룸들[0].price}}원</p>
   </div>
+
   <div>
-    <img src="./assets/room1.jpg" class="room-img">
-    <h4 @click="모달창열림 = true">{{ products[1] }}</h4>
-    <p>60만원</p> 
-    <button @click="신고수[1]++">허위매물신고</button> 
-    <span> 신고수 : {{ 신고수[1] }}</span>
+    <img :src="원룸들[1].image" class="room-img">
+    <h4>{{원룸들[1].title}}</h4>
+    <p>{{원룸들[1].price}}원</p>
   </div>
+
   <div>
-    <img src="./assets/room2.jpg" class="room-img">
-    <h4 @click="모달창열림 = true">{{ products[2] }}</h4>
-    <p>70만원</p> 
-    <button @click="신고수[2]++">허위매물신고</button>
-    <span> 신고수 : {{ 신고수[2] }}</span>
+    <img :src="원룸들[2].image" class="room-img">
+    <h4>{{원룸들[2].title}}</h4>
+    <p>{{원룸들[2].price}}원</p>
+  </div>
+
+  <div>
+    <img :src="원룸들[3].image" class="room-img">
+    <h4>{{원룸들[3].title}}</h4>
+    <p>{{원룸들[3].price}}원</p>
+  </div>
+
+  <div>
+    <img :src="원룸들[4].image" class="room-img">
+    <h4>{{원룸들[4].title}}</h4>
+    <p>{{원룸들[4].price}}원</p>
+  </div>
+
+  <div>
+    <img :src="원룸들[5].image" class="room-img">
+    <h4>{{원룸들[5].title}}</h4>
+    <p>{{원룸들[5].price}}원</p>
   </div>
 
   </template>   
  
 <script>  
 
+import data from './assets/oneroom.js';
 
 export default {
   name: 'App',
   data(){ 
     return {
-      모달창열림 : true,
+      원룸들: data,
+      모달창열림 : false,
       신고수 : [0,0,0],
       메뉴들 : ['Home', 'Shop', 'About'],
       products : ['평거동원룸', '가좌동원룸', '칠암동원룸'],
