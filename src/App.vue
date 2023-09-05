@@ -1,51 +1,29 @@
 <template>
 
+  <div v-if="1==2">
+    안녕하세요
+  </div>
+
+  <div v-else>
+    안녕하세요2
+  </div>
+
   <div class="black-bg" v-if="모달창열림 == true">
       <div class="white-bg">
-        <h4>상세페이지</h4>
-        <p>상세페이지 내용</p>
+        <h4>{{ 원룸들[누른거].title }}</h4>
+        <p>{{원룸들[누른거].content}}</p>
         <button @click="모달창열림 = false">닫기</button>
       </div>
   </div>
 
   <div class="menu">
-    <a v-for="(a,i)  in 메뉴들" :key="i">{{ a }}</a> 
+    <a v-for="a in 메뉴들" :key="a">{{ a }}</a> 
   </div>
 
-  <div>
-    <img :src="원룸들[0].image" class="room-img">
-    <h4 @click="모달창열림 == true">{{원룸들[0].title}}</h4>
-    <p>{{원룸들[0].price}}원</p>
-  </div>
-
-  <div>
-    <img :src="원룸들[1].image" class="room-img">
-    <h4>{{원룸들[1].title}}</h4>
-    <p>{{원룸들[1].price}}원</p>
-  </div>
-
-  <div>
-    <img :src="원룸들[2].image" class="room-img">
-    <h4>{{원룸들[2].title}}</h4>
-    <p>{{원룸들[2].price}}원</p>
-  </div>
-
-  <div>
-    <img :src="원룸들[3].image" class="room-img">
-    <h4>{{원룸들[3].title}}</h4>
-    <p>{{원룸들[3].price}}원</p>
-  </div>
-
-  <div>
-    <img :src="원룸들[4].image" class="room-img">
-    <h4>{{원룸들[4].title}}</h4>
-    <p>{{원룸들[4].price}}원</p>
-  </div>
-
-  <div>
-    <img :src="원룸들[5].image" class="room-img">
-    <h4>{{원룸들[5].title}}</h4>
-    <p>{{원룸들[5].price}}원</p>
+  <div v-for="(a,i) in 원룸들" :key="i">
+    <img :src="a.image" class="room-img">
+    <h4 @click="모달창열림=true; 누른거 = i ">{{a.title}}</h4>
+    <p>{{a.price}}원</p>
   </div>
 
   </template>   
@@ -58,6 +36,7 @@ export default {
   name: 'App',
   data(){ 
     return {
+      누른거 : 0,
       원룸들: data,
       모달창열림 : false,
       신고수 : [0,0,0],
@@ -74,11 +53,17 @@ export default {
 
 <style>
 
+
+
 body{
   margin: 0;
 }
 div{
   box-sizing: border-box;
+}
+
+.black-bg .white-bg h4 {
+  margin-top: -30px; /* 여기에 원하는 값(픽셀)을 입력하세요 */
 }
 .black-bg{
   width: 100%; height: 100%;
@@ -86,7 +71,7 @@ div{
   position: fixed; padding: 150px;
 }
 .white-bg{
-  width: 20%; height:25%; background: white;
+  width: 20%; height:12%; background: white;
   border-radius: 15px;
   padding: 60px;
   position: fixed;

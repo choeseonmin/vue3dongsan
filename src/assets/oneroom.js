@@ -9,14 +9,14 @@ export default [{
     id : 1,
     title: "칠암동 경상국립대 후문 원룸",
     image: "https://codingapple1.github.io/vue/room1.jpg",
-    content: "침실만 따로 있는 공용 셰어하우스입니다. 최대 2인 가능",
+    content: "침실만 따로 있는 공용 셰어하우스입니다. 최대 2인",
     price: 450000
     },
     {
     id : 2,
     title: "가좌동 가좌캠퍼스 후문 원룸",
     image: "https://codingapple1.github.io/vue/room2.jpg",
-    content: "금산오거리 역세권 아파트입니다. 애완동물 불가능 ?",
+    content: "금산오거리 역세권 아파트입니다. 애완동물 불가능",
     price: 780000
     },
     {
