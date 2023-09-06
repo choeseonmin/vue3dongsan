@@ -6,7 +6,7 @@
         <p>{{원룸들[누른거].content}}</p>
         <p>{{원룸들[누른거].price}}</p>
         <Discount/>
-        <button @click="모달창열림 = false">닫기</button>
+        <!-- <button @click="모달창열림 = false">닫기</button> -->
       </div>
   </div>
 </template>
@@ -14,6 +14,11 @@
 <script>
 export default {
   name: 'Modal',
+  props: {
+    원룸들 : Array,
+    누른거 : Number,
+    모달창열림 : Boolean,
+  }
 
 }
 </script>

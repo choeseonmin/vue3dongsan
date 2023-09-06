@@ -4,24 +4,24 @@
     <a v-for="a in 메뉴들" :key="a">{{ a }}</a> 
   </div>
 
+  <!-- 할인배너 컴포넌트 화 -->
   <Discount/>
+
+<!-- Modal.vue에 Props 문법을 이용해 데이터를 전송하는 문법 -->
+  <Modal :원룸들="원룸들" :누른거="누른거" :모달창열림="모달창열림" />
+
+  <Card :원룸들="원룸들" :누른거="누른거" :모달창열림="모달창열림"/>
   
-  <Modal/>
-
-
-  <div v-for="(a,i) in 원룸들" :key="i">
-    <img :src="a.image" class="room-img">
-    <h4 @click="모달창열림=true; 누른거 = i ">{{a.title}}</h4>
-    <p>{{a.price}}원</p>
-  </div>
-
-  </template>   
+  
+</template>   
  
 <script>  
 
+// 컴포넌트 데이터들을 import하는 문법
 import data from './assets/oneroom.js';
 import Discount from './Discount.vue';
 import Modal from './Modal.vue';
+import Card from './Card.vue';
 
 
 export default {
@@ -35,9 +35,11 @@ export default {
     }
   },
 
+  // 컴포넌트를 등록하는 것
   components: {
     Discount: Discount,
     Modal: Modal,
+    Card: Card,
   }
 }
 </script>
