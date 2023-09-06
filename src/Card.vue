@@ -1,8 +1,8 @@
 <template>
-    <div v-for="(a,i) in 원룸들" :key="i">
-        <img :src="a.image" class="room-img">
-        <h4>{{a.title}}</h4>
-        <p>{{a.price}}원</p>
+    <div>
+        <img :src="원룸.image" class="room-img">
+        <h4>{{원룸.title}}</h4>
+        <p>{{원룸.price}}원</p>
     </div>
   
   
@@ -12,11 +12,8 @@
 
 <script>
 export default {
-    name: 'Card',
     props: {
-        원룸들 : Array,
-        누른거 : Number,
-        모달창열림 : Boolean,
+        원룸 : Object,
     }
 
 }
