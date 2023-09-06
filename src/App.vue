@@ -8,9 +8,9 @@
   <Discount/>
 
 <!-- Modal.vue에 Props 문법을 이용해 데이터를 전송하는 문법 -->
-  <Modal :원룸들="원룸들" :누른거="누른거" :모달창열림="모달창열림" />
+  <Modal @closeModal="모달창열림 = false" :원룸들="원룸들" :누른거="누른거" :모달창열림="모달창열림" />
 
-  <Card :원룸="원룸들[i]" v-for="(a,i) in 원룸들" :key="a"/>
+  <Card @openModal="모달창열림 = true; 누른거 = $event" :원룸="원룸들[i]" v-for="(a,i) in 원룸들" :key="a"/>
   <!-- <Card :원룸="원룸들[1]" />
   <Card :원룸="원룸들[2]" />
   <Card :원룸="원룸들[3]" />
@@ -45,8 +45,10 @@ export default {
     Discount: Discount,
     Modal: Modal,
     Card: Card,
+  },
+
+   
   }
-}
 </script>
 
 <style>
@@ -70,11 +72,11 @@ div{
   position: fixed; padding: 150px;
 }
 .white-bg{
-  width:40%; height:18%; background: white;
-  border-radius: 15px;
+  width:40%; height:40%; background: white;
+  border-radius: 10px;
   padding: 60px;
   position: fixed;
-  top: 10%; left: 40%;
+  top: 10%; left: 30%;
 }
 .room-img{
   width: 20%;
