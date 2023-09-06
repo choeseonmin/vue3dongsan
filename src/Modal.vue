@@ -4,7 +4,8 @@
         <img :src="원룸들[누른거].image" style="width: 100%;">
         <br><br><br><br><h4>{{원룸들[누른거].title}}</h4>
         <p>{{원룸들[누른거].content}}</p>
-        <p>{{원룸들[누른거].price}}원</p>
+        <input v-model="month">
+        <p> {{ month }}개월 선택 : {{원룸들[누른거].price * month}}원</p> 
         <button @click="$emit('closeModal')">닫기</button>
         <!-- $emit은 애미(부모)컴포넌트 에게 데이터를 보낸다고 생각 -->
       </div>
@@ -14,11 +15,24 @@
 <script>
 export default {
   name: 'Modal',
+  data() {
+    return { 
+        month : 1,
+    }
+  },
+
+  watch: {
+    month(a) { 
+      if (a >= 13){
+        alert('13개월 이상 입력하지 마십시오')
+      }
+    },
+  },
   props: {
     원룸들 : Array,
     누른거 : Number,
     모달창열림 : Boolean
-  },
+  }
 
 }
 </script>
