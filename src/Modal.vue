@@ -21,6 +21,12 @@ export default {
     }
   },
 
+  beforeUpdate() {
+    if (this.month == 2){
+      alert('최소 3개월 이상 부터 가능합니다.')
+    }
+  },
+
   watch: {
     month(a) { 
       if (a >= 13){

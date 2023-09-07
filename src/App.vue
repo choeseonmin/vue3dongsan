@@ -6,17 +6,23 @@
 
 
 <!-- 할인배너를 컴포넌트화 한 것 -->
-<Discount />
+<Discount/>
 
-<!-- Modal.vue에 Props 문법을 이용해 데이터를 전송하는 문법 -->
+<button @click="priceSort">가격 낮은 순</button>
+<button @click="priceHigh">가격 높은 순</button>
+<button @click="sortABC">가나다순</button>
+<button @click="sortBack">되돌리기</button>
+
+
+<Transition name="fade">
+  <!-- Modal.vue에 Props 문법을 이용해 데이터를 전송하는 문법 -->
   <Modal @closeModal="모달창열림 = false" :원룸들="원룸들" :누른거="누른거" :모달창열림="모달창열림" />
+</Transition>
 
-  <Card @openModal="모달창열림 = true; 누른거 = $event" :원룸="원룸들[i]" v-for="(a,i) in 원룸들" :key="a"/>
-  <!-- <Card :원룸="원룸들[1]" />
-  <Card :원룸="원룸들[2]" />
-  <Card :원룸="원룸들[3]" />
-  <Card :원룸="원룸들[4]" />
-  <Card :원룸="원룸들[5]" /> -->
+  
+
+<Card @openModal="모달창열림 = true; 누른거 = $event" :원룸="원룸들[i]" v-for="(a,i) in 원룸들" :key="a"/>
+
   
   
 </template>   
@@ -30,12 +36,16 @@ import Modal from './Modal.vue';
 import Card from './Card.vue';
 
 
+
 export default {
   name: 'App',
   data(){ 
     return {
+      amount : 30,
+      showDiscount: true,
+      원룸들오리지널 : [...data],
       누른거 : 0,
-      원룸들: data,
+      원룸들: [...data],
       모달창열림 : false, 
       메뉴들 : ['Home', 'Shop', 'About'],
     }
@@ -48,14 +58,50 @@ export default {
     Card: Card,
   },
 
-   
-  }
+  methods : {
+    sortBack(){
+     this.원룸들 = [...this.원룸들오리지널]
+    }, 
+    priceSort(){
+      this.원룸들.sort(function(a,b){
+        return a.price - b.price
+      })
+    },
+    priceHigh(){
+      this.원룸들.sort(function(a,b){
+        return b.price - a.price
+      })
+    },
+    sortABC(){
+      this.원룸들.sort(function(a,b){
+        return a.title.localeCompare(b.title)
+      })
+    }
+   },
+   }
 </script>
 
 <style>
+.fade-leave-from{ 
+  opacity: 1;
+}
+.fade-leave-active{
+  transition: all 1s;
+}
+.fade-leave-to{
+  transform: translateY(-500px);
+}
 
 
-
+.fade-enter-from {
+  transform: translateY(-500px);
+}
+.fade-enter-active {
+  transition: all 1s;
+}
+.fade-enter-to {
+  transform: translateY( 0px);
+}
 
 body{
   margin: 0;
@@ -68,7 +114,7 @@ div{
   margin-top: -30px; /* 여기에 원하는 값(픽셀)을 입력하세요 */
 }
 .black-bg{
-  width: 100%; height: 100%;
+  width: 100%; height: 50%;
   background: rgba(0,0,0,0.5);
   position: fixed; padding: 150px;
 }
