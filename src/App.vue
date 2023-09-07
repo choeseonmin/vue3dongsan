@@ -2,10 +2,11 @@
 
   <div class="menu">
     <a v-for="a in 메뉴들" :key="a">{{ a }}</a> 
-  </div 
+  </div>
 
-<!-- 할인배너 컴포넌트 화 -->
-  <Discount/>
+
+<!-- 할인배너를 컴포넌트화 한 것 -->
+<Discount />
 
 <!-- Modal.vue에 Props 문법을 이용해 데이터를 전송하는 문법 -->
   <Modal @closeModal="모달창열림 = false" :원룸들="원룸들" :누른거="누른거" :모달창열림="모달창열림" />
