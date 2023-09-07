@@ -2,7 +2,7 @@
 
   <div class="menu">
     <a v-for="a in 메뉴들" :key="a">{{ a }}</a> 
-  </div>
+  </div 
 
 <!-- 할인배너 컴포넌트 화 -->
   <Discount/>
